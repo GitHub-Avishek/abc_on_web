@@ -1,15 +1,15 @@
 services:
 
-  abcuihost:
+  ui_host:
     container_name: abc_web_ui
     build: ./abc_web_ui/
     command: streamlit run ./code/abc_app.py --server.port 8501
     ports:
       - 8501:8501
     depends_on:
-      - abcdbhost
+      - db_host
 
-  abcdbhost:
+  db_host:
     container_name: abc_web_db
     build: ./abc_web_db/
     restart: always
