@@ -1,0 +1,12 @@
+{
+	"db_table"  : "ABC_JOB_MST",
+	"operation" : "delete",
+	"payload" :	[
+					{
+						"JobName" : "ETLJOB-3"
+					},
+					{
+						"JobName" : "ETLJOB-4"
+					}
+				]
+}

@@ -1,0 +1,23 @@
+{ 	
+	"db_table"  : "ABC_SUBJECT_AREA_MST",
+	"operation" : "update",
+	"payload" :	[
+					{
+						"upd_key" : {
+										"SubjectAreaName" : "SAM"
+									},
+						"upd_val" : {
+										"SubjectAreaDesc" : "--UPD-- SAM Desc"
+									}
+					},
+					{
+						
+						"upd_key" : {
+										"SubjectAreaName" : "SAN"
+									},
+						"upd_val" : {
+										"SubjectAreaDesc" : "--UPD-- SAN Desc"
+									}
+					}
+				]
+}

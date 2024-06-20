@@ -1,0 +1,14 @@
+{ 	
+	"db_table"  : "ABC_SUBJECT_AREA_MST",
+	"operation" : "insert",
+	"payload" :	[
+					{
+						"SubjectAreaName" : "SAM",
+						"SubjectAreaDesc" : "Subject Area - M"
+					},
+					{
+						"SubjectAreaName" : "SAN",
+						"SubjectAreaDesc" : "Subject Area - N"
+					}				
+				]
+}

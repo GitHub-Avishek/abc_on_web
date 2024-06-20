@@ -1,0 +1,23 @@
+services:
+
+  abcuihost:
+    container_name: abc_web_ui
+    build: ./abc_web_ui/
+    command: streamlit run ./code/abc_app.py --server.port 8501
+    ports:
+      - 8501:8501
+    depends_on:
+      - abcdbhost
+
+  abcdbhost:
+    container_name: abc_web_db
+    build: ./abc_web_db/
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: 'R00tP$wD'
+    ports:
+      - '33061:3306'
+    volumes:
+      - abcdb-datavolume:/var/lib/mysql
+volumes:
+  abcdb-datavolume:

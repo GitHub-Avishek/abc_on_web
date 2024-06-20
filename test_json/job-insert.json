@@ -1,0 +1,24 @@
+{ 	
+	"db_table"  : "ABC_JOB_MST",
+	"operation" : "insert",
+	"payload" :	[
+					{
+						"JobName" : "ETLJOB-1",
+						"JobTypeName" : "ETL",
+						"JobDescription" : "Test job",
+						"SubjectAreaName" : "SAA",
+						"JobScriptName" : "etljob_1.py",
+						"JobScriptLocation" : "/dev/",
+						"isActive" : "Y"
+					},
+					{
+						"JobName" : "ETLJOB-2",
+						"JobTypeName" : "ETL",
+						"JobDescription" : "Test job",
+						"SubjectAreaName" : "SAA",
+						"JobScriptName" : "etljob_2.py",
+						"JobScriptLocation" : "/dev/",
+						"isActive" : "Y"
+					}				
+				]
+}

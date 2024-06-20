@@ -1,0 +1,12 @@
+{
+	"db_table"  : "ABC_SUBJECT_AREA_MST",
+	"operation" : "delete",
+	"payload" :	[
+					{
+						"SubjectAreaName" : "SAN"
+					},
+					{
+						"SubjectAreaName" : "SAM"
+					}
+				]
+}

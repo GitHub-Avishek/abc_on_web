@@ -1,0 +1,25 @@
+{ 	
+	"db_table"  : "ABC_WORKFLOW_MST",
+	"operation" : "update",
+	"payload" :	[
+					{
+						"upd_key" : {
+										"WorkflowName" : "WRKFLOW-1"
+									},
+						"upd_val" : {
+										"SubjectAreaName" : "SAD",
+										"isActive" : "N"
+									}
+					},
+					{
+						
+						"upd_key" : {
+										"WorkflowName" : "WRKFLOW-2"
+									},
+						"upd_val" : {
+										"WorkflowScriptName" : "WRKFLOW_2x.py",
+										"WorkflowScriptLocation" : "/dev/xxx/"
+									}
+					}
+				]
+}

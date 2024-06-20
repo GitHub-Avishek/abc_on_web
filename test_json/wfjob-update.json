@@ -1,0 +1,24 @@
+{ 	
+	"db_table"  : "ABC_WORKFLOW_JOB_REL",
+	"operation" : "update",
+	"payload" :	[
+					{
+						"upd_key" : {
+										"WorkflowName" : "WORKFLOW-1",
+										"JobName"	   : "ETLJOB-1"	
+									},
+						"upd_val" : {
+										"JobExecOrderSeq" : "100"
+									}
+					},
+					{
+						"upd_key" : {
+										"WorkflowName" : "WORKFLOW-1",
+										"JobName"	   : "ETLJOB-2"	
+									},
+						"upd_val" : {
+										"JobExecOrderSeq" : "200"
+									}
+					}
+				]
+}

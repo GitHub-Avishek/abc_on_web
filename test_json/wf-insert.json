@@ -1,0 +1,22 @@
+{ 	
+	"db_table"  : "ABC_WORKFLOW_MST",
+	"operation" : "insert",
+	"payload" :	[
+					{
+						"WorkflowName" : "WRKFLOW-1",
+						"WorkflowDescription" : "Test worlflow",
+						"SubjectAreaName" : "SAA",
+						"WorkflowScriptName" : "WRKFLOW_1.py",
+						"WorkflowScriptLocation" : "/dev/",
+						"isActive" : "Y"
+					},
+					{
+						"WorkflowName" : "WRKFLOW-2",
+						"WorkflowDescription" : "Test workflow",
+						"SubjectAreaName" : "SAA",
+						"WorkflowScriptName" : "WRKFLOW_2.py",
+						"WorkflowScriptLocation" : "/dev/",
+						"isActive" : "Y"
+					}
+				]
+}

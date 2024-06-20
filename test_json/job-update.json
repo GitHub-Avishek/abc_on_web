@@ -1,0 +1,25 @@
+{ 	
+	"db_table"  : "ABC_JOB_MST",
+	"operation" : "update",
+	"payload" :	[
+					{
+						"upd_key" : {
+										"JobName" : "ETLJOB-1"
+									},
+						"upd_val" : {
+										"SubjectAreaName" : "SAD",
+										"isActive" : "N"
+									}
+					},
+					{
+						
+						"upd_key" : {
+										"JobName" : "ETLJOB-2"
+									},
+						"upd_val" : {
+										"JobTypeName" : "ETL-UPD",
+										"JobScriptLocation" : "/dev/XXX"
+									}
+					}
+				]
+}

@@ -1,0 +1,12 @@
+{
+	"db_table"  : "ABC_WORKFLOW_MST",
+	"operation" : "delete",
+	"payload" :	[
+					{
+						"WorkflowName" : "WRKFLOW-1"
+					},
+					{
+						"WorkflowName" : "WRKFLOW-2"
+					}
+				]
+}

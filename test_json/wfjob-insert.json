@@ -1,0 +1,16 @@
+{ 	
+	"db_table"  : "ABC_WORKFLOW_JOB_REL",
+	"operation" : "insert",
+	"payload" :	[
+					{
+						"WorkflowName" : "WORKFLOW-1",
+						"JobName" : "ETLJOB-1",
+						"JobExecOrderSeq" : "1"
+					},
+					{
+						"WorkflowName" : "WORKFLOW-1",
+						"JobName" : "ETLJOB-2",
+						"JobExecOrderSeq" : "2"
+					}
+				]
+}
