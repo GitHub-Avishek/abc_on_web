@@ -9,10 +9,10 @@ test_chart_data_1 = pd.DataFrame(data = {'Subject Area': ['MDT', 'FLS', 'CRO', '
 test_chart_data_2 = pd.DataFrame(data = {'Subject Area': ['MDT', 'FLS', 'CRO', 'EMD', 'CBI'], 'Workflow Count': [10, 12, 15, 8, 11]})
 
 test_chart_data_3 = {'MDT' : pd.DataFrame(data = {'Workflow': ['MDT_WF_1', 'MDT_WF_2', 'MDT_WF_3', 'MDT_WF_4', 'MDT_WF_5'], 'Job Count': [20, 5, 2, 7, 11]}),
-                   'FLS' : pd.DataFrame(data = {'Workflow': ['FLS_WF_1', 'FLS_WF_2', 'FLS_WF_3', 'FLS_WF_4', 'FLS_WF_5'], 'Job Count': [5, 10, 8, 8, 3]}),
-                   'CRO' : pd.DataFrame(data = {'Workflow': ['CRO_WF_1', 'MDT_WF_2', 'CRO_WF_3', 'CRO_WF_4', 'CRO_WF_5'], 'Job Count': [11, 7, 8, 5, 2]}),
-                   'EMD' : pd.DataFrame(data = {'Workflow': ['EMD_WF_1', 'EMD_WF_2', 'EMD_WF_3', 'EMD_WF_4', 'EMD_WF_5'], 'Job Count': [9, 3, 7, 2, 13]}),
-                   'CBI' : pd.DataFrame(data = {'Workflow': ['CBI_WF_1', 'CBI_WF_2', 'CBI_WF_3', 'CBI_WF_4', 'CBI_WF_5'], 'Job Count': [10, 12, 6, 8, 17]}),
+                     'FLS' : pd.DataFrame(data = {'Workflow': ['FLS_WF_1', 'FLS_WF_2', 'FLS_WF_3', 'FLS_WF_4', 'FLS_WF_5'], 'Job Count': [5, 10, 8, 8, 3]}),
+                     'CRO' : pd.DataFrame(data = {'Workflow': ['CRO_WF_1', 'MDT_WF_2', 'CRO_WF_3', 'CRO_WF_4', 'CRO_WF_5'], 'Job Count': [11, 7, 8, 5, 2]}),
+                     'EMD' : pd.DataFrame(data = {'Workflow': ['EMD_WF_1', 'EMD_WF_2', 'EMD_WF_3', 'EMD_WF_4', 'EMD_WF_5'], 'Job Count': [9, 3, 7, 2, 13]}),
+                     'CBI' : pd.DataFrame(data = {'Workflow': ['CBI_WF_1', 'CBI_WF_2', 'CBI_WF_3', 'CBI_WF_4', 'CBI_WF_5'], 'Job Count': [10, 12, 6, 8, 17]}),
                     }
 
 test_chart_data_4 = pd.DataFrame(data = {'JobID': ['100', '101', '103','104', '105'], 

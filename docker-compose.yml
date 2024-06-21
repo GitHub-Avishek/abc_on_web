@@ -16,7 +16,7 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: 'R00tPa55'
     ports:
-      - '33061:3306'
+      - '3360:3306'
     volumes:
       - abcdb-datavolume:/var/lib/mysql
 
