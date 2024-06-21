@@ -14,7 +14,7 @@ services:
     build: ./abc_web_db/
     restart: always
     environment: 
-      MYSQL_ROOT_PASSWORD: 'R00tP$wD'
+      MYSQL_ROOT_PASSWORD: 'R00tPa55'
     ports:
       - '33061:3306'
     volumes:
