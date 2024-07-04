@@ -72,3 +72,26 @@ CREATE TABLE ABC_WORKFLOW_JOB_REL
     constraint FK_ABC_WORKFLOW_JOB_REL_JOB foreign key (JobID) references ABC_JOB_MST(JobID) on delete cascade
 );
 
+
+CREATE TABLE ABC_JOB_RUN_LOG
+(
+    JobRunID                 bigint not null,
+    JobID                    integer not null,
+    JobStartTmst             timestamp(0) null,
+    JobEndTmst               timestamp(0) null,
+    JobStatus                varchar(1),
+    constraint PK_ABC_JOB_RUN_LOG primary key (JobRunID),
+    constraint FK_ABC_JOB_RUN_LOG_JOB foreign key (JobID) references ABC_JOB_MST(JobID) on delete cascade
+);
+
+
+CREATE TABLE ABC_JOB_RUN_ERROR_LOG
+(
+    JobRunID                 bigint not null,
+    JobID                    integer not null,
+    ErrorText                varchar(256),
+    ErrorDetails             blob,
+    ErrorLogTmst             timestamp(0) null,
+    constraint FK_ABC_JOB_RUN_LOG_ERR_JRL foreign key (JobRunID) references ABC_JOB_RUN_LOG(JobRunID) on delete cascade,
+    constraint FK_ABC_JOB_RUN_LOG_ERR_JOB foreign key (JobID) references ABC_JOB_MST(JobID) on delete cascade
+);

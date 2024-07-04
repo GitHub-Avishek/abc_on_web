@@ -1,11 +1,20 @@
 services:
 
-  ui_host:
+  gui_host:
     container_name: abc_web_ui
     build: ./abc_web_ui/
-    command: streamlit run ./code/abc_app.py --server.port 8501
+    command: streamlit run ./gui_code/main.py --server.port 8501
     ports:
       - 8501:8501
+    depends_on:
+      - db_host
+
+  api_host:
+    container_name: abc_web_api
+    build: ./txn_api/
+    command: fastapi run ./api_code/main.py --port 8000
+    ports:
+      - 8000:8000
     depends_on:
       - db_host
 

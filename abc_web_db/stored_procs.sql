@@ -496,3 +496,116 @@ begin
 end //
 
 delimiter ;
+
+
+
+-- MySQL INSERT SP : ABC_JOB_RUN_LOG --
+
+-- drop procedure insert_job_run_log;
+
+delimiter //
+create procedure insert_job_run_log(in json_txt blob)
+begin 
+
+
+	declare query_stmt blob;
+
+	declare exit handler for sqlexception
+    begin
+		GET DIAGNOSTICS CONDITION 1 @sqlstate = RETURNED_SQLSTATE, @errno = MYSQL_ERRNO, @text = MESSAGE_TEXT;
+		SET @full_error = CONCAT("ERROR ", @errno, " (", @sqlstate, "): ", @text);
+		 SELECT @full_error as return_val;
+    end;
+
+	SET @job_id = 0;
+	SET @job_run_id = 0;
+	set @query_stmt_txt = concat('select t.JobID,concat(t.JobID,lpad(DATEDIFF(current_date(),''2020-01-01''),5,''0''),lpad(TIME_TO_SEC(current_time()),5,''0''))
+    into @job_id,@job_run_id
+	from
+	(select JobID from json_table(''', json_txt, ''', ''$'' COLUMNS(
+      JobName VARCHAR(255) PATH "$.""JobName""" ERROR ON EMPTY)) j
+	  inner join ABC_JOB_MST z
+	  on j.JobName = z.JobName) t');
+
+	prepare query_stmt from @query_stmt_txt;
+	execute query_stmt;
+    
+	insert into ABC_JOB_RUN_LOG(JobRunID,JobID,JobStartTmst,JobEndTmst,JobStatus) values(@job_run_id,@job_id,current_timestamp(), NULL, 'R');
+	commit;	
+    
+    select @job_run_id as return_val;
+
+end //
+
+delimiter ;
+
+
+-- MySQL UPDATE SP : ABC_JOB_RUN_LOG --
+
+-- drop procedure update_job_run_log;
+
+delimiter //
+create procedure update_job_run_log(in json_txt blob)
+begin 
+
+	declare update_stmt blob;
+
+	declare exit handler for sqlexception
+    begin
+		GET DIAGNOSTICS CONDITION 1 @sqlstate = RETURNED_SQLSTATE, @errno = MYSQL_ERRNO, @text = MESSAGE_TEXT;
+		SET @full_error = CONCAT("ERROR ", @errno, " (", @sqlstate, "): ", @text);
+		 SELECT @full_error as return_val;
+    end;
+
+	set @update_stmt_txt = concat('update ABC_JOB_RUN_LOG s
+	inner join
+	(
+	select j.JobRunID, cast(substring(j.JobRunID,1,length(j.JobRunID)-10) as unsigned) as JobID,j.JobStatus
+	from json_table(''', json_txt, ''', ''$'' COLUMNS(
+      JobRunID VARCHAR(255) PATH "$.""JobRunID""" ERROR ON EMPTY, 
+      JobStatus VARCHAR(255) PATH "$.""JobStatus""" ERROR ON EMPTY
+    )) as j 
+    ) t 
+	on s.JobRunID = t.JobRunID
+	set
+		s.JobEndTmst = current_timestamp(), s.JobStatus = t.JobStatus');
+
+	prepare update_stmt from @update_stmt_txt;
+	execute update_stmt;
+	commit;
+
+end //
+
+delimiter ;
+
+
+-- MySQL INSERT SP : ABC_JOB_RUN_ERROR_LOG --
+
+-- drop procedure insert_job_run_error_log;
+
+delimiter //
+create procedure insert_job_run_error_log(in json_txt blob)
+begin 
+
+	declare insert_stmt blob;
+
+	declare exit handler for sqlexception
+    begin
+		GET DIAGNOSTICS CONDITION 1 @sqlstate = RETURNED_SQLSTATE, @errno = MYSQL_ERRNO, @text = MESSAGE_TEXT;
+		SET @full_error = CONCAT("ERROR ", @errno, " (", @sqlstate, "): ", @text);
+		 SELECT @full_error as return_val;
+    end;
+
+	set @insert_stmt_txt = concat('insert into ABC_JOB_RUN_ERROR_LOG(JobRunID,JobID,ErrorText,ErrorDetails,ErrorLogTmst)
+	select j.JobRunID,cast(substring(j.JobRunID,1,length(j.JobRunID)-10) as unsigned) as JobID,j.ErrorText,j.ErrorDetails,current_timestamp()
+	from json_table(''', json_txt, ''', ''$'' COLUMNS(
+      JobRunID VARCHAR(255) PATH "$.""JobRunID""" ERROR ON EMPTY, 
+      ErrorText VARCHAR(255) PATH "$.""ErrorText""" ERROR ON EMPTY,
+	  ErrorDetails blob PATH "$.""ErrorDetails""" ERROR ON EMPTY
+    )) as j ');
+
+	prepare insert_stmt from @insert_stmt_txt;
+	execute insert_stmt;
+	commit;
+
+end //

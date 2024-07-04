@@ -25,7 +25,7 @@ def show_sidebar():
         st.sidebar.divider()
 
         #Home
-        st.sidebar.page_link("abc_app.py", label="🏛️ :gray[__Home__]")
+        st.sidebar.page_link("main.py", label="🏛️ :gray[__Home__]")
 
         st.sidebar.markdown(':gray[__Master Tables__]',unsafe_allow_html=True)
         #SubjectArea
@@ -38,3 +38,9 @@ def show_sidebar():
         st.sidebar.markdown(':gray[__Relationship Tables__]',unsafe_allow_html=True)
         #Workflow & Job
         st.sidebar.page_link("pages/workflow_job.py", label=":gray[▶ __Workflow-Job__]")
+
+        st.sidebar.markdown(':gray[__Transaction Tables__]',unsafe_allow_html=True)
+        #job run log
+        st.sidebar.page_link("pages/job_run_log.py", label=":gray[▶ __Job-Run-Log__]")
+        #job error log
+        st.sidebar.page_link("pages/job_error_log.py", label=":gray[▶ __Job-Error-Log__]")
